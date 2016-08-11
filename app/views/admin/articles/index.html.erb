@@ -1,0 +1,8 @@
+<div class="list-articles">
+  <%= link_to(I18n.t("manage.create"), new_admin_article_path) %>
+  <div class="list-group">
+    <% @articles.each do |article| %>
+        <%= link_to(article.name, admin_article_path(article), class: "list-group-item") %>
+    <% end %>
+  </div>
+</div>

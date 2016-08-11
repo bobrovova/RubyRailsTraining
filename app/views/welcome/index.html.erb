@@ -1,0 +1,24 @@
+<div class="list-articles">
+  <% @articles.each do |article| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= link_to('#', class: set_class_liked(article), data: {article_id: article.id}) do %>
+            <span class="glyphicon glyphicon-heart"></span>
+        <% end %> |
+        <%= article.name %>
+      </div>
+      <div class="panel-body">
+        <%= article.text %>
+      </div>
+      <div class="panel-footer">
+        <%=t :tags %>
+        <% article.tags.each do |tag| %>
+            <%= link_to(tag_path(tag.id)) do %>
+              <span class="label label-info"><%= tag.name %></span>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <%= will_paginate @articles_paginate %>
+</div>

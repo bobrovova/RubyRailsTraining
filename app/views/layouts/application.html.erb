@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ruby</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <p class="navbar-text"><%= link_to "NoveoBlog", user_root_path %> </p>
+        <p>
+          <%= link_to "en", params.merge(:locale => "en") %>
+          /
+          <%= link_to "ru", params.merge(:locale => "ru") %>
+        </p>
+      </div>
+      <div class="navbar-collapse collapse">
+        <% if user_signed_in? %>
+            <p class="navbar-text navbar-right"><%= link_to I18n.t('header.logout'), destroy_user_session_path, :method => :delete, class: "navbar-link" %></p>
+            <p class="navbar-text navbar-right"><%=t 'header.signed_as' %> <a href="#" class="navbar-link"><%= current_user.email %></a></p>
+            <% if can? :update, @article %>
+              <p class="navbar-text navbar-right">
+                <%= link_to(I18n.t("adminbar"), admin_articles_path) %>
+              </p>
+            <% end %>
+
+        <% else %>
+            <p class="navbar-text navbar-right">
+              <%= link_to I18n.t('header.login'), new_user_session_path, class: "navbar-link" %>
+              /
+              <%= link_to I18n.t('header.signin'), new_user_registration_path, class: "navbar-link" %>
+            </p>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+
+  <%= yield %>
+
+</body>
+</html>

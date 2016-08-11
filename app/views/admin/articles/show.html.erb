@@ -1,0 +1,22 @@
+<div class="list-articles">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= link_to(I18n.t("manage.edit"), edit_admin_article_path(@article)) %>
+        |
+        <%= link_to(I18n.t("manage.delete"), admin_article_delete_path(@article)) %>
+        |
+        <%= @article.name %>
+      </div>
+      <div class="panel-body">
+        <%= @article.text %>
+      </div>
+      <div class="panel-footer">
+        <%=t :tags %>
+        <% @article.tags.each do |tag| %>
+            <%= link_to(tag_path(tag.id)) do %>
+                <span class="label label-info"><%= tag.name %></span>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+</div>

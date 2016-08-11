@@ -1,0 +1,24 @@
+.login {
+  width: 300px;
+  margin: 150px auto;
+}
+
+.list-articles {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.pagination {
+  width: 100%;
+  text-align: center;
+}
+
+a.like {
+  text-decoration: none;
+  color: green;
+}
+
+a.like.liked {
+  text-decoration: none;
+  color: red;
+}
