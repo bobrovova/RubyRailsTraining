@@ -3,12 +3,14 @@ $(document).ready(->
     event.preventDefault()
     likeBtn = $(this)
 
-    url = "/likes/like"
+    url = "/likes"
+    method = "POST"
     if likeBtn.hasClass('liked')
-      url = "/likes/dislike"
-    console.log "ajax"
+      url = "/likes/0"
+      method = "DELETE"
+
     $.ajax({
-      method: "POST",
+      method: method,
       url: url,
       data: {
         article_id: likeBtn.data().articleId

@@ -5,11 +5,9 @@ Rails.application.routes.draw do
   end
 
   # For like/dislike
-  post 'likes/like'
-  post 'likes/dislike'
+  resources :likes, only: [:create, :destroy]
 
   devise_for :users
-  get 'persons/profile'
 
   root 'welcome#index'
   get 'welcome/index', as: 'user_root'

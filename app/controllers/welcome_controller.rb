@@ -1,6 +1,4 @@
 class WelcomeController < ApplicationController
-  before_filter :authenticate_user!
-
   def index
     page = (params[:page].blank?) ? 1 : Integer(params[:page])
     per_page = 1
