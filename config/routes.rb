@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :articles
-    get "articles/:id/delete", to: "articles#destroy", as: 'article_delete'
+    resources :articlesы
   end
 
   # For like/dislike

@@ -1,40 +1,40 @@
 class Admin::ArticlesController < ApplicationController
   def index
-    authorize! :manage, :all
     @articles = Article.all
+    authorize! :manage, @articles
   end
 
   def create
-    authorize! :manage, :all
+    authorize! :manage, :create
     Article.create(article_params())
     redirect_to admin_articles_path
   end
 
   def new
-    authorize! :manage, :all
+    authorize! :manage, :new
     @article = Article.new
   end
 
   def show
-    authorize! :manage, :all
     @article = Article.find(params[:id])
+    authorize! :manage, @article
   end
 
   def edit
-    authorize! :manage, :all
     @article = Article.find(params[:id])
+    authorize! :manage, @article
   end
 
   def update
-    authorize! :manage, :all
     article = Article.find(params[:id])
+    authorize! :manage, article
     article.update!(article_params())
     redirect_to edit_admin_article_path(params[:id])
   end
 
   def destroy
-    authorize! :manage, :all
     article = Article.find(params[:id])
+    authorize! :manage, article
     article.destroy
     redirect_to admin_articles_path
   end

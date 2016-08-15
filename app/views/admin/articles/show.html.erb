@@ -3,7 +3,7 @@
       <div class="panel-heading">
         <%= link_to(I18n.t("manage.edit"), edit_admin_article_path(@article)) %>
         |
-        <%= link_to(I18n.t("manage.delete"), admin_article_delete_path(@article)) %>
+        <%= link_to(I18n.t("manage.delete"), admin_article_path(@article), method: :delete) %>
         |
         <%= @article.name %>
       </div>
